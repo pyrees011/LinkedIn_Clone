@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createJobs</title>
+</head>
+<body>
+    <h1>createJobs</h1>
+    <form action="{{ url_for('mongo.createJobs') }}" method="post" enctype="multipart/form-data">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" name="jobTitle" required><br>
+
+        <label for="jobDescription">Job Description:</label>
+        <textarea id="jobDescription" name="jobDesc" rows="4" required></textarea><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br>
+
+        <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" name="companyName" required><br>
+
+        <label for="salaryRange">Salary Range:</label>
+        <input type="text" id="salaryRange" name="salaryRange"><br>
+
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration"><br>
+
+        <label for="requirements">requirements:</label>
+        <input type="text" id="requirements" name="requirements"><br>
+
+        <label for="img" class="form-label">choose an img: </label>
+        <input type="file" name="image"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

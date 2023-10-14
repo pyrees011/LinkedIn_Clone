@@ -1,0 +1,71 @@
+{% extends "auth_template.html"%}
+
+{% block css %}{{ url_for('static', filename='css/auth.css')}}{% endblock %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block nav %}<a class="nav-link" href="{{ url_for('auth.login') }}">employee</a>{% endblock %}
+
+{% block content%}
+<section class="Form my-5 mx-5 myForm">
+    <div class="container-fluid customCont">
+        <div class="row no-gutters customCont">
+            <div class="col-lg-8 nopadding">
+                <img src="{{ url_for('static', filename='logo/background-img.jpg') }}" class="img" alt="...">
+            </div>
+            <div class="col-lg-4 my-5 cusCont">
+                <h2 class="text-center">Sign Up for employer</h2>
+                <form action="{{url_for('auth.sign_up')}}" method="post">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group m-3">
+                        {{ form.pro_type.label(class="form-control-label visually-hidden") }}
+                        {{ form.pro_type(value="employer", class="form-control visually-hidden") }}
+                        {% for error in form.username.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group m-3">
+                        {{ form.username.label(class="form-control-label") }}
+                        {{ form.username(class="form-control") }}
+                        {% for error in form.username.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group m-3">
+                        {{ form.email.label(class="form-control-label") }}
+                        {{ form.email(class="form-control") }}
+                        {% for error in form.email.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group m-3">
+                        {{ form.password.label(class="form-control-label") }}
+                        {{ form.password(class="form-control") }}
+                        {% for error in form.password.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group m-3">
+                        {{ form.confirm_password.label(class="form-control-label") }}
+                        {{ form.confirm_password(class="form-control") }}
+                        {% for error in form.confirm_password.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group m-3">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+
+                    <div class="text-center"><a href="{{ url_for('auth.login') }}">Already have an account? Log In</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

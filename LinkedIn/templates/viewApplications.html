@@ -1,0 +1,35 @@
+{% extends "navbar.html" %}
+
+{% block css %}{{ url_for('static', filename='css/applications.css') }}{% endblock %}
+
+{% block header %}Applications{% endblock %}
+
+{% block content %}
+{% if appl %}
+    {% for details in appl %}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename='uploads/'~ details.image) }}" class="img-fluid" alt="Job Image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ details.job_title }}</h5>
+                        <p class="card-text">Company: {{ details.company_name }}</p>
+                        <p class="card-text">Salary Range: {{ details.salary_range }}</p>
+                        <p class="card-text">Duration: {{ details.duration }}</p>
+                        <p class="card-text">Employer Email: {{ details.email }}</p>
+                        <p class="card-text">Employee: {{ details.employee }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Employer: {{ details.employer }}</small>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h3 class="text-center mt-5">No Applications</h3>
+{% endif %}
+
+{% endblock %}
